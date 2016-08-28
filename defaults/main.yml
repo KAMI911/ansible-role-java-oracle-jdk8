@@ -1,0 +1,15 @@
+---
+
+force_java_install: False
+keep_java_installer: False
+
+java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jinfo', 'jcontrol', 'jmc', 'keytool', 'schemagen', 'jjs', 'jvisualvm', 'policytool', 'rmid', 'wsgen', 'javaws', 'javapackager', 'javadoc', 'rmic', 'servertool', 'jstatd', 'java', 'jdb', 'jhat', 'jar', 'rmiregistry', 'jps', 'native2ascii', 'xjc', 'javac', 'wsimport', 'unpack200', 'tnameserv', 'javafxpackager', 'jdeps', 'jsadebugd', 'jcmd', 'appletviewer', 'idlj', 'jconsole', 'jarsigner', 'serialver', 'orbd', 'jstack', 'jstat' ]
+##java_jre_bins: [ 'pack200', 'jcontrol', 'keytool', 'jjs', 'policytool', 'rmid', 'javaws', 'servertool', 'rmiregistry', 'unpack200', 'tnameserv', 'orbd' ]
+
+java_bins_priority: 9
+
+java_version: 8
+java_update: 77
+java_build: 03
+
+java_platform: linux-x64

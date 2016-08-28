@@ -1,0 +1,59 @@
+---
+
+- stat: path="{{ java_folder }}/README.html"
+  register: java_installed
+
+- name: creating directory
+  file:
+    path: "{{ java_folder }}"
+    state: directory
+    mode: 0775
+    owner: root
+    group: root
+  when: java_installed.stat.exists == False or force_java_install == True
+
+- name: downloading Java 8 JDK file {{ java_download_filename }}
+  get_url:
+    url: "{{ java_download_url }}"
+    validate_certs: no
+    headers: Cookie:oraclelicense=accept-securebackup-cookie
+    dest: "{{ java_archive }}"
+    mode: 0440
+    owner: root
+    group: root
+  when: java_installed.stat.exists == False or force_java_install == True
+
+- name: uncompressing {{ java_download_filename }} file
+  unarchive:
+    src: "{{ java_archive }}"
+    dest: "{{ java_usr_folder }}"
+    owner: root
+    group: root
+    copy: no
+  when: java_installed.stat.exists == False or force_java_install == True
+
+- name: "refersing /usr/java/latest link to {{ java_folder }}"
+  file:
+    src: "{{ java_folder }}"
+    dest: "/usr/java/latest"
+    owner: root
+    group: root
+    state: link
+
+- name: remove downloaded file
+  file:
+    path: "{{ java_archive }}"
+    state: absent
+  when: keep_java_installer == False
+
+- name: "install Java environment variables"
+  template:
+    src: "java.sh.j2"
+    dest: "/etc/profile.d/java.sh"
+    owner: root
+    group: root
+
+- name: "link Java DK binaries"
+  become: Yes
+  alternatives: link="/usr/bin/{{ item }}" name="{{ item }}" path="{{ java_folder }}/bin/{{ item }}" priority={{ java_bins_priority }}
+  with_items: "{{ java_bins }}"
