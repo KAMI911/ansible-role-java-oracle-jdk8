@@ -7,3 +7,5 @@ java_download_url: "{{ java_download_base_url }}/{{ java_version }}u{{ java_upda
 java_usr_folder: /usr/java
 java_folder: "{{ java_usr_folder }}/jdk1.{{ java_version }}.0_{{ java_update }}"
 java_archive: "{{ java_usr_folder }}/{{ java_download_filename }}"
+
+java_security_folder: "{{ java_folder }}/jre/lib/security"

@@ -22,11 +22,11 @@ Do not delete Java installer.
 
 Java major version.
 
-    java_update: 77
+    java_update: 112
 
 Java minor version.
 
-    java_build: 03
+    java_build: 15
 
 Java micro version.
 

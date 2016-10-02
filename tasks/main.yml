@@ -32,6 +32,15 @@
     copy: no
   when: java_installed.stat.exists == False or force_java_install == True
 
+- name: "copy Java cacerts file"
+  copy:
+    src: "cacerts"
+    dest: "{{ java_security_folder }}/cacerts"
+    owner: root
+    group: root
+    backup: yes
+    force: yes
+
 - name: "refersing /usr/java/latest link to {{ java_folder }}"
   file:
     src: "{{ java_folder }}"
