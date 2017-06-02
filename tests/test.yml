@@ -5,4 +5,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - java-oracle-jdk8
+    - ansible-role-java-oracle-jdk8
