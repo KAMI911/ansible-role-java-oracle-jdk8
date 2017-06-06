@@ -12,7 +12,7 @@
     group: root
   when: java_installed.stat.exists == False or force_java_install == True
 
-- name: downloading Java 8 JDK file {{ java_download_filename }}
+- name: "downloading Java 8 JDK file {{ java_download_filename }}"
   get_url:
     url: "{{ java_download_url }}"
     validate_certs: no
@@ -23,7 +23,7 @@
     group: root
   when: java_installed.stat.exists == False or force_java_install == True
 
-- name: uncompressing {{ java_download_filename }} file
+- name: "uncompressing {{ java_download_filename }} file"
   unarchive:
     src: "{{ java_archive }}"
     dest: "{{ java_usr_folder }}"
