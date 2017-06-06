@@ -10,6 +10,6 @@ java_bins_priority: 9
 java_version: 8
 java_update: 131
 java_build: 11
-java_download_code: d54c1d3a095b4ff2b6607d096fa80163
+java_download_code: "d54c1d3a095b4ff2b6607d096fa80163"
 
 java_platform: linux-x64
