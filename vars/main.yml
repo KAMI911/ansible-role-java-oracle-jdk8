@@ -2,7 +2,7 @@
 java_download_base_url: http://download.oracle.com/otn-pub/java/jdk
 
 java_download_filename: "jdk-{{ java_version }}u{{ java_update }}-{{ java_platform }}.tar.gz"
-java_download_url: "{{ java_download_base_url }}/{{ java_version }}u{{ java_update }}-b{{ java_build }}/{{ java_path }}/{{ java_download_filename }}"
+java_download_url: "{{ java_download_base_url }}/{{ java_version }}u{{ java_update }}-b{{ java_build }}/{{ java_path }}/{{ java_download_code }}/{{ java_download_filename }}"
 
 java_usr_folder: /usr/java
 java_folder: "{{ java_usr_folder }}/jdk1.{{ java_version }}.0_{{ java_update }}"
