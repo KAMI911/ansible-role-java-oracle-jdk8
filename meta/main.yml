@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Kálmán Szalai - KAMI
+  description: "Ansible role for configuring Oracle Java 8"
+  license: MIT
+  min_ansible_version: 1.9
+
+  categories:
+    - development
+    - system
+    - java
+
+  platforms:
+    - name: EL
+      versions:
+        - all
+
+dependencies: []
