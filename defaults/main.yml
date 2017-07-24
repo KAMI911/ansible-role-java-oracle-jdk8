@@ -8,8 +8,8 @@ java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jin
 java_bins_priority: 9
 
 java_version: 8
-java_update: 131
-java_build: 11
-java_download_code: "d54c1d3a095b4ff2b6607d096fa80163"
+java_update: 141
+java_build: 15
+java_download_code: "336fa29ff2bb4ef291e347e091f7f4a7"
 
 java_platform: linux-x64
