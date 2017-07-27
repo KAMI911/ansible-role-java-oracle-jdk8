@@ -26,7 +26,7 @@ Do not delete Java installer.
 
 Java major version.
 
-    java_update: 141
+    java_update: 144
 
 Java minor version.
 
