@@ -1,7 +1,6 @@
-#
-# Testing Java Orcale JDK 8 Ansible role
-#
 ---
+# testing Java Orcale JDK 8 Ansible role
+
 - hosts: localhost
   remote_user: root
   roles:
