@@ -16,7 +16,7 @@
 - name: is already downloaded locally
   local_action:
     module: stat
-    path:  '{{ java_download_filename }}'
+    path: '{{ java_download_filename }}'
   register: java_is_local_download_file
   when: java_local_installer == True
 
@@ -41,7 +41,7 @@
     src: '{{ java_download_filename }}'
     dest: '{{ java_archive }}'
     mode: 0644
-  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_remote_installer == False
+  # when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_remote_installer == False
 
 - name: "downloading Java 8 JDK file {{ java_download_filename }}"
   get_url:
