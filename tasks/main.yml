@@ -1,12 +1,12 @@
 ---
 # tasks file for ansible-role-java-oracle-jdk8
 
-- stat: path="{{ java_folder }}/README.html"
+- stat: path='{{ java_folder }}/README.html'
   register: java_installed
 
 - name: creating directory
   file:
-    path: "{{ java_folder }}"
+    path: '{{ java_folder }}'
     state: directory
     mode: 0775
     owner: root
@@ -18,80 +18,81 @@
     module: stat
     path: '{{ java_download_filename }}'
   register: java_is_local_download_file
-  when: java_local_installer == True
 
 - name: is already downloaded
   stat:
     path: '{{ java_archive }}'
   register: java_is_download_file
-  when: java_remote_installer == True
 
-- name: "downloading Java 8 JDK file {{ java_download_filename }} to local machine"
-  local_action:
-    module: get_url
-    url: '{{ java_download_url }}'
-    validate_certs: no
-    headers: Cookie:oraclelicense=accept-securebackup-cookie
-    dest: '{{ java_archive }}'
-    mode: 0644
-  when: ( java_is_local_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_local_installer == False
+- block:
+  - name: 'downloading Java 8 JDK file {{ java_download_filename }} to local machine'
+    local_action:
+      module: get_url
+      url: '{{ java_download_url }}'
+      validate_certs: no
+      headers: Cookie:oraclelicense=accept-securebackup-cookie
+      dest: './{{ java_download_filename }}'
+      mode: 0644
+    run_once: True
+    when: ( java_is_local_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_installer_local == True
 
-- name: copy java tar file
-  copy:
-    src: '{{ java_download_filename }}'
-    dest: '{{ java_archive }}'
-    mode: 0644
-  # when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_remote_installer == False
+  - name: copy java tar file
+    copy:
+      src: '{{ java_download_filename }}'
+      dest: '{{ java_archive }}'
+      mode: 0644
+    when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_local == True
+  when: java_installer_local == True
 
-- name: "downloading Java 8 JDK file {{ java_download_filename }}"
+- name: 'downloading Java 8 JDK file {{ java_download_filename }}'
   get_url:
     url: '{{ java_download_url }}'
     validate_certs: no
     headers: Cookie:oraclelicense=accept-securebackup-cookie
     dest: '{{ java_archive }}'
     mode: 0644
-  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_remote_installer == True
+  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_installer_local == False
 
-- name: "uncompressing {{ java_download_filename }} file"
+- name: 'uncompressing {{ java_download_filename }} file'
   unarchive:
-    src: "{{ java_archive }}"
-    dest: "{{ java_usr_folder }}"
+    src: '{{ java_archive }}'
+    dest: '{{ java_usr_folder }}'
     owner: root
     group: root
     copy: no
   when: java_installed.stat.exists == False or force_java_install == True
 
-- name: "copy Java cacerts file"
+- name: 'copy Java cacerts file'
   copy:
-    src: "cacerts"
-    dest: "{{ java_security_folder }}/cacerts"
+    src: 'cacerts'
+    dest: '{{ java_security_folder }}/cacerts'
     owner: root
     group: root
     backup: yes
     force: yes
 
-- name: "refersing /usr/java/latest link to {{ java_folder }}"
+- name: 'refersing {{ java_usr_folder }}/latest link to {{ java_folder }}'
   file:
-    src: "{{ java_folder }}"
-    dest: "/usr/java/latest"
+    src: '{{ java_folder }}'
+    dest: '{{ java_usr_folder }}/latest'
     owner: root
     group: root
     state: link
 
 - name: remove downloaded file
   file:
-    path: "{{ java_archive }}"
+    path: '{{ java_archive }}'
     state: absent
   when: java_installer_keep == False
 
-- name: "install Java environment variables"
+- name: 'install Java environment variables'
   template:
-    src: "java.sh.j2"
-    dest: "/etc/profile.d/java.sh"
+    src: 'java.sh.j2'
+    dest: '/etc/profile.d/java.sh'
     owner: root
     group: root
 
-- name: "link Java DK binaries"
+- name: 'link Java DK binaries'
   become: Yes
-  alternatives: link="/usr/bin/{{ item }}" name="{{ item }}" path="{{ java_folder }}/bin/{{ item }}" priority={{ java_bins_priority }}
-  with_items: "{{ java_bins }}"
+  alternatives: link='/usr/bin/{{ item }}' name='{{ item }}' path='{{ java_folder }}/bin/{{ item }}' priority={{ java_bins_priority }}
+  with_items: '{{ java_bins }}'
