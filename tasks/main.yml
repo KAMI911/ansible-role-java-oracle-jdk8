@@ -13,16 +13,44 @@
     group: root
   when: java_installed.stat.exists == False or force_java_install == True
 
-- name: "downloading Java 8 JDK file {{ java_download_filename }}"
-  get_url:
-    url: "{{ java_download_url }}"
+- name: is already downloaded locally
+  local_action:
+    module: stat
+    path: '{{ java_archive }}'
+  register: java_is_download_file
+  when: java_local_installer == True
+
+- name: is already downloaded
+  stat:
+    path: '{{ java_archive }}'
+  register: java_is_download_file
+  when: java_remote_installer == True
+
+- name: "downloading Java 8 JDK file {{ java_download_filename }} to local machine"
+  local_action:
+    module: get_url
+    url: '{{ java_download_url }}'
     validate_certs: no
     headers: Cookie:oraclelicense=accept-securebackup-cookie
-    dest: "{{ java_archive }}"
-    mode: 0440
-    owner: root
-    group: root
-  when: java_installed.stat.exists == False or force_java_install == True
+    dest: '{{ java_archive }}'
+    mode: 0644
+  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_local_installer == False
+
+- name: copy java tar file
+  copy:
+    src: '{{ java_download_filename }}'
+    dest: '{{ java_archive }}'
+    mode: 0644
+  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_remote_installer == False
+
+- name: "downloading Java 8 JDK file {{ java_download_filename }}"
+  get_url:
+    url: '{{ java_download_url }}'
+    validate_certs: no
+    headers: Cookie:oraclelicense=accept-securebackup-cookie
+    dest: '{{ java_archive }}'
+    mode: 0644
+  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_remote_installer == True
 
 - name: "uncompressing {{ java_download_filename }} file"
   unarchive:
@@ -54,7 +82,7 @@
   file:
     path: "{{ java_archive }}"
     state: absent
-  when: keep_java_installer == False
+  when: java_installer_keep == False
 
 - name: "install Java environment variables"
   template:
