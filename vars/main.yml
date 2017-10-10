@@ -11,3 +11,7 @@ java_folder: "{{ java_usr_folder }}/jdk1.{{ java_version }}.0_{{ java_update }}"
 java_archive: "{{ java_usr_folder }}/{{ java_download_filename }}"
 
 java_security_folder: "{{ java_folder }}/jre/lib/security"
+
+java_local_installer: False
+java_remote_installer: False
+
