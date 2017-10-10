@@ -16,8 +16,8 @@
 - name: is already downloaded locally
   local_action:
     module: stat
-    path: '{{ java_archive }}'
-  register: java_is_download_file
+    path:  '{{ java_download_filename }}'
+  register: java_is_local_download_file
   when: java_local_installer == True
 
 - name: is already downloaded
@@ -34,7 +34,7 @@
     headers: Cookie:oraclelicense=accept-securebackup-cookie
     dest: '{{ java_archive }}'
     mode: 0644
-  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_local_installer == False
+  when: ( java_is_local_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_local_installer == False
 
 - name: copy java tar file
   copy:
