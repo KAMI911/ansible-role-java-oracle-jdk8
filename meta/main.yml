@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Kálmán Szalai - KAMI
-  description: "Ansible role for configuring Oracle Java 8 or Server JRE"
+  description: "Ansible role for configuring Oracle Java 8 or Server JRE with local installation support"
   license: MIT
   min_ansible_version: 1.9
 
