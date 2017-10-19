@@ -20,3 +20,5 @@ java_download_code: '090f390dda5b47b9b721c7dfaa008135'
 java_platform: linux-x64
 
 java_usr_folder: /usr/java
+
+java_download_base_url: http://download.oracle.com/otn-pub/java/jdk
