@@ -5,4 +5,4 @@
   remote_user: root
   roles:
     - ansible-role-java-oracle-jdk8
-    - { role: ansible-role-java-oracle-jdk8, java_type: server-jre, java_usr_folder: '/usr/java/server-jre', java_latest_folder: '/usr/java/latest-server-jre' }
+    #- { role: ansible-role-java-oracle-jdk8, java_type: server-jre, java_usr_folder: '/usr/java/server-jre', java_latest_folder: '/usr/java/latest-server-jre' }
