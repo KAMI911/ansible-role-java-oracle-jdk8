@@ -14,6 +14,7 @@
   when: java_installed.stat.exists == False or force_java_install == True
 
 - name: is already downloaded locally
+  become: false
   local_action:
     module: stat
     path: '{{ java_download_filename }}'
@@ -26,6 +27,7 @@
 
 - block:
   - name: 'downloading Java 8 JDK file {{ java_download_filename }} to local machine'
+    become: false
     local_action:
       module: get_url
       url: '{{ java_download_url }}'
@@ -71,10 +73,10 @@
     backup: yes
     force: yes
 
-- name: 'refersing {{ java_usr_folder }}/latest link to {{ java_folder }}'
+- name: 'refersing {{ java_latest_folder }} link to {{ java_folder }}'
   file:
     src: '{{ java_folder }}'
-    dest: '{{ java_usr_folder }}/latest'
+    dest: '{{ java_latest_folder }}'
     owner: root
     group: root
     state: link
@@ -91,8 +93,3 @@
     dest: '/etc/profile.d/java.sh'
     owner: root
     group: root
-
-- name: 'link Java DK binaries'
-  become: Yes
-  alternatives: link='/usr/bin/{{ item }}' name='{{ item }}' path='{{ java_folder }}/bin/{{ item }}' priority={{ java_bins_priority }}
-  with_items: '{{ java_bins }}'

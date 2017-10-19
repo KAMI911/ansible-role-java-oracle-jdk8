@@ -8,7 +8,7 @@ java_installer_force_overwrite: True
 java_installer_keep: True
 java_installer_local: False
 
-java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jinfo', 'jcontrol', 'jmc', 'keytool', 'schemagen', 'jjs', 'jvisualvm', 'policytool', 'rmid', 'wsgen', 'javaws', 'javapackager', 'javadoc', 'rmic', 'servertool', 'jstatd', 'java', 'jdb', 'jhat', 'jar', 'rmiregistry', 'jps', 'native2ascii', 'xjc', 'javac', 'wsimport', 'unpack200', 'tnameserv', 'javafxpackager', 'jdeps', 'jsadebugd', 'jcmd', 'appletviewer', 'idlj', 'jconsole', 'jarsigner', 'serialver', 'orbd', 'jstack', 'jstat' ]
+java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jinfo', 'jcontrol', 'jmc', 'keytool', 'schemagen', 'jjs', 'jvisualvm', 'policytool', 'rmid', 'wsgen', 'javaws', 'javadoc', 'rmic', 'servertool', 'jstatd', 'java', 'jdb', 'jhat', 'jar', 'rmiregistry', 'jps', 'native2ascii', 'xjc', 'javapackager', 'javac', 'wsimport', 'unpack200', 'tnameserv', 'javafxpackager', 'jdeps', 'jsadebugd', 'jcmd', 'appletviewer', 'idlj', 'jconsole', 'jarsigner', 'serialver', 'orbd', 'jstack', 'jstat' ]
 
 java_bins_priority: 9
 
@@ -20,5 +20,6 @@ java_download_code: '090f390dda5b47b9b721c7dfaa008135'
 java_platform: linux-x64
 
 java_usr_folder: /usr/java
+java_latest_folder: /usr/java/latest
 
 java_download_base_url: http://download.oracle.com/otn-pub/java/jdk
