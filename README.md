@@ -1,4 +1,4 @@
-# Ansible Role: Installs Java 8 JDK
+# Ansible Role: Installs Java 8 JDK or Server JRE
 
 Java 8 JDK installation on Linux.
 
@@ -18,25 +18,57 @@ Available variables are listed below, along with default values (see `defaults/m
 
 Force to install Java on already installed system.
 
-    keep_java_installer: False
+    java_installer_force_overwrite: False
+
+Force to overwrite Java installer.
+
+    java_installer_keep: False
 
 Do not delete Java installer.
+
+    java_installer_local: False
+
+Install local (form Ansible host) JDK/Server JRE instead of downloading on target machine.
+
+    java_type: jdk
+
+Type of Java installer - JDK is: jdk, and Server JRE is: server-jre
 
     java_version: 8
 
 Java major version.
 
-    java_update: 144
+    java_update: 152
 
 Java minor version.
 
-    java_build: "01"
+    java_build: "16"
 
 Java micro version.
 
     java_platform: linux-x64
 
 Java platform to install.
+
+    java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jinfo', 'jcontrol', 'jmc', 'keytool', 'schemagen', 'jjs', 'jvisualvm', 'policytool', 'rmid', 'wsgen', 'javaws', 'javadoc
+
+Update alternatives on these binaries.
+
+    java_bins_priority: 9
+
+Alternatives priority on these binaries.
+
+    java_usr_folder: /usr/java
+
+Location of installed Java home.
+
+    java_latest_folder: /usr/java/latest
+
+Where to link the latest folder.
+
+    java_download_base_url: http://download.oracle.com/otn-pub/java/jdk
+
+Download link of Java installers.
 
 ## Dependencies
 

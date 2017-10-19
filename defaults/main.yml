@@ -12,6 +12,7 @@ java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jin
 
 java_bins_priority: 9
 
+java_type: jdk # jdk or server-jre
 java_version: 8
 java_update: 152
 java_build: '16'

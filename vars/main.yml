@@ -1,7 +1,7 @@
 ---
 # vars file for ansible-role-java-oracle-jdk8
 
-java_download_filename: 'jdk-{{ java_version }}u{{ java_update }}-{{ java_platform }}.tar.gz'
+java_download_filename: '{{ java_type }}-{{ java_version }}u{{ java_update }}-{{ java_platform }}.tar.gz'
 java_download_url: '{{ java_download_base_url }}/{{ java_version }}u{{ java_update }}-b{{ java_build }}/{{ java_download_code }}/{{ java_download_filename }}'
 
 java_folder: '{{ java_usr_folder }}/jdk1.{{ java_version }}.0_{{ java_update }}'
