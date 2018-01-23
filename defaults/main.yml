@@ -13,14 +13,17 @@ java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jin
 java_bins_priority: 9
 
 java_type: jdk # jdk or server-jre
-java_version: 8
-java_update: 152
-java_build: '16'
-java_download_code: 'aa0333dd3019491ca4f6ddbe78cdb6d0'
 
-# java_version: 8
-# java_update: 151
+# Server JRE or JDK 8.161
+java_version: 8
+java_update: 161
+java_build: '12'
+java_download_code: '2f38c3b165be4555a1fa6e98c45e0808'
+
+# Server JRE or JDK 8.162
+# java_update: 162
 # java_build: '12'
+# java_download_code: '0da788060d494f5095bf8624735fa2f1'
 
 java_platform: linux-x64
 
