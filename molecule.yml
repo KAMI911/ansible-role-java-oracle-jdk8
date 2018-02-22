@@ -25,87 +25,15 @@ ansible:
   playbook: tests/test.yml
   diff: False
   host_vars:
-    wildfly-centos6-9.0.2:
-      wildfly_version: 9.0.2.Final
-    wildfly-centos6-10.0.0:
-      wildfly_version: 10.0.0.Final
-    wildfly-centos6-10.1.0:
-      wildfly_version: 10.1.0.Final
-    wildfly-centos6-11.0.0:
-      wildfly_version: 11.0.0.Final
-    wildfly-centos7-9.0.2:
-      wildfly_version: 9.0.2.Final
-    wildfly-centos7-10.0.0:
-      wildfly_version: 10.0.0.Final
-    wildfly-centos7-10.1.0:
-      wildfly_version: 10.1.0.Final
-    wildfly-centos7-11.0.0:
-      wildfly_version: 11.0.0.Final
-
-    wildfly-centos6-9.0.2-domain:
-      wildfly_version: 9.0.2.Final
-      wildfly_mode: domain
-    wildfly-centos6-10.0.0-domain:
-      wildfly_version: 10.0.0.Final
-      wildfly_mode: domain
-    wildfly-centos6-10.1.0-domain:
-      wildfly_version: 10.1.0.Final
-      wildfly_mode: domain
-    wildfly-centos6-11.0.0-domain:
-      wildfly_version: 11.0.0.Final
-      wildfly_mode: domain
-    wildfly-centos7-9.0.2-domain:
-      wildfly_version: 9.0.2.Final
-      wildfly_mode: domain
-    wildfly-centos7-10.0.0-domain:
-      wildfly_version: 10.0.0.Final
-      wildfly_mode: domain
-    wildfly-centos7-10.1.0-domain:
-      wildfly_version: 10.1.0.Final
-      wildfly_mode: domain
-    wildfly-centos7-11.0.0-domain:
-      wildfly_version: 11.0.0.Final
-      wildfly_mode: domain
-
-    wildfly-centos6-9.0.2-domain-controller:
-      wildfly_version: 9.0.2.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos6-10.0.0-domain-controller:
-      wildfly_version: 10.0.0.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos6-10.1.0-domain-controller:
-      wildfly_version: 10.1.0.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos6-11.0.0-domain-controller:
-      wildfly_version: 11.0.0.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos7-9.0.2-domain-controller:
-      wildfly_version: 9.0.2.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos7-10.0.0-domain-controller:
-      wildfly_version: 10.0.0.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos7-10.1.0-domain-controller:
-      wildfly_version: 10.1.0.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
-    wildfly-centos7-11.0.0-domain-controller:
-      wildfly_version: 11.0.0.Final
-      wildfly_mode: domain
-      wildfly_role: domain-master-slave
+    java-centos6-8-jdk:
+      java_type: jdk
+    java-centos6-8-server-jre:
+      java_type: server-jre
+    java-centos7-8-jdk:
+      java_type: jdk
+    java-centos7-8-server-jre:
+      java_type: server-jre
 
   group_vars:
     all:
-      wildfly_installer_keep: True
-      wildfly_management_users:
-        - { name: 'david', password: 'ruomlig' }
-        - { name: 'roger', password: 'sretaw' }
-      wildfly_app_users:
-        - { name: 'rich', password: 'thgirw' }
-        - { name: 'nick', password: 'nosam' }
+      java_installer_keep: True
