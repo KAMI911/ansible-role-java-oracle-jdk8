@@ -10,32 +10,40 @@ platforms:
     image: centos
     image_version: 6.8
     groups:
-      - group1
+      - jdk
 
   - name: java-centos6-8-server-jre
     image: centos
     image_version: 6.8
     groups:
-      - group1
-
+      - jdk
 
   - name: java-centos7-jdk
     image: milcom/centos7-systemd
     image_version: latest
     privileged: True
     groups:
-      - group1
+      - server_jre
 
   - name: java-centos7-server-jre
     image: milcom/centos7-systemd
     image_version: latest
     privileged: True
     groups:
-      - group1
+      - server_jre
+
 provisioner:
   name: ansible
+  options:
+    vvv: True
   lint:
     name: ansible-lint
+  inventory:
+    group_vars:
+      jdk:
+        java_type: 'jdk'
+      server_jre:
+        java_type: 'server-jre'
 scenario:
   name: default
 verifier:
