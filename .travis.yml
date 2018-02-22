@@ -15,6 +15,7 @@ install:
   - pip install ansible-lint>=3.4.20
   - pip install docker
   - pip install molecule==2.8.2
+  - pip install docker-py
 
 script:
   - molecule test
