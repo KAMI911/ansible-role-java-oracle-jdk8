@@ -8,9 +8,11 @@ java_installer_force_overwrite: True
 java_installer_keep: True
 java_installer_local: False
 
-java_bins: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jinfo', 'jcontrol', 'jmc', 'keytool', 'schemagen', 'jjs', 'jvisualvm', 'policytool', 'rmid', 'wsgen', 'javaws', 'javadoc', 'rmic', 'servertool', 'jstatd', 'java', 'jdb', 'jhat', 'jar', 'rmiregistry', 'jps', 'native2ascii', 'xjc', 'javapackager', 'javac', 'wsimport', 'unpack200', 'tnameserv', 'javafxpackager', 'jdeps', 'jsadebugd', 'jcmd', 'appletviewer', 'idlj', 'jconsole', 'jarsigner', 'serialver', 'orbd', 'jstack', 'jstat' ]
+java_bins_jdk: [ 'javah', 'javap', 'jmap', 'extcheck', 'pack200', 'jrunscript', 'jinfo', 'jcontrol', 'jmc', 'keytool', 'schemagen', 'jjs', 'jvisualvm', 'policytool', 'rmid', 'wsgen', 'javaws', 'javadoc', 'rmic', 'servertool', 'jstatd', 'java', 'jdb', 'jhat', 'jar', 'rmiregistry', 'jps', 'native2ascii', 'xjc', 'javapackager', 'javac', 'wsimport', 'unpack200', 'tnameserv', 'javafxpackager', 'jdeps', 'jsadebugd', 'jcmd', 'appletviewer', 'idlj', 'jconsole', 'jarsigner', 'serialver', 'orbd', 'jstack', 'jstat' ]
+java_bins_server_jre: [ 'extcheck', 'pack200', 'jrunscript', 'keytool', 'schemagen', 'jjs', 'rmid', 'wsgen', 'rmic', 'servertool', 'java', 'jar', 'rmiregistry', 'jps', 'native2ascii', 'xjc', 'javac', 'wsimport', 'unpack200', 'tnameserv', 'jdeps', 'jcmd', 'idlj', 'jarsigner', 'orbd' ]
 
 java_bins_priority: 9
+java_bins_update: True
 
 java_type: jdk # jdk or server-jre
 
