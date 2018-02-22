@@ -1,0 +1,39 @@
+---
+driver:
+  name: docker
+docker:
+  containers:
+    - name: java-centos6-8-jdk
+      image: centos
+      image_version: 6.8
+
+    - name: java-centos6-8-server-jre
+      image: centos
+      image_version: 6.8
+
+    - name: java-centos7-jdk
+      image: milcom/centos7-systemd
+      image_version: latest
+      privileged: True
+
+    - name: java-centos7-server-jre
+      image: milcom/centos7-systemd
+      image_version: latest
+      privileged: True
+
+ansible:
+  playbook: tests/test.yml
+  diff: False
+  host_vars:
+    java-centos6-8-jdk:
+      java_type: jdk
+    java-centos6-8-server-jre:
+      java_type: server-jre
+    java-centos7-8-jdk:
+      java_type: jdk
+    java-centos7-8-server-jre:
+      java_type: server-jre
+
+  group_vars:
+    all:
+      java_installer_keep: True
