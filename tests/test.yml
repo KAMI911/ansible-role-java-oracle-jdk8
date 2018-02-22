@@ -1,8 +1,29 @@
 ---
-# testing Java Orcale JDK 8 Ansible role
+# # tests for ansible-role-java-jdk8
 
-- hosts: localhost
-  remote_user: root
+- hosts: all
+  tasks:
+    - name: create a group of all hosts by operating system
+      group_by:
+        key: "{{ ansible_distribution}}-{{ ansible_distribution_major_version }}"
+
+
+- hosts: CentOS-6
+  tasks:
+    - name: install initscripts
+      package:
+        name: initscripts
+        state: present
+
+- hosts: CentOS-7
+  tasks:
+    - name: remove requiretty from /etc/sudoers
+      lineinfile:
+        dest: "/etc/sudoers"
+        regexp: "requiretty$"
+        state: absent
+
+- hosts: all
+  any_errors_fatal: true
   roles:
     - ansible-role-java-oracle-jdk8
-    #- { role: ansible-role-java-oracle-jdk8, java_type: server-jre, java_usr_folder: '/usr/java/server-jre', java_latest_folder: '/usr/java/latest-server-jre' }
