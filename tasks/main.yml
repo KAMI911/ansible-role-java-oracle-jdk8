@@ -1,7 +1,7 @@
 ---
 # tasks file for ansible-role-java-oracle-jdk8
 
-- name: 'check if Java is installed.'
+- name: check if Java is installed.
   stat: path='{{ java_folder }}/README.html'
   register: java_installed
 
