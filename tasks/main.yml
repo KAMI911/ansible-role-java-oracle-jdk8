@@ -26,24 +26,24 @@
   register: java_is_download_file
 
 - block:
-  - name: 'downloading Java 8 JDK file {{ java_download_filename }} to local machine'
-    become: false
-    local_action:
-      module: get_url
-      url: '{{ java_download_url }}'
-      validate_certs: no
-      headers: Cookie:oraclelicense=accept-securebackup-cookie
-      dest: './{{ java_download_filename }}'
-      mode: 0644
-    run_once: True
-    when: ( java_is_local_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_installer_local == True
+    - name: 'downloading Java 8 JDK file {{ java_download_filename }} to local machine'
+      become: false
+      local_action:
+        module: get_url
+        url: '{{ java_download_url }}'
+        validate_certs: no
+        headers: Cookie:oraclelicense=accept-securebackup-cookie
+        dest: './{{ java_download_filename }}'
+        mode: 0644
+      run_once: True
+      when: ( java_is_local_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_installer_local == True
 
-  - name: copy java tar file
-    copy:
-      src: '{{ java_download_filename }}'
-      dest: '{{ java_archive }}'
-      mode: 0644
-    when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_local == True
+    - name: copy java tar file
+      copy:
+        src: '{{ java_download_filename }}'
+        dest: '{{ java_archive }}'
+        mode: 0644
+      when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_local == True
   when: java_installer_local == True
 
 - name: 'downloading Java 8 JDK file {{ java_download_filename }}'
