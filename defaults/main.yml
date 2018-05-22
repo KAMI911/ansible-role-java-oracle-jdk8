@@ -45,4 +45,3 @@ java_usr_folder: /usr/java
 java_latest_folder: /usr/java/latest
 
 java_download_base_url: http://download.oracle.com/otn-pub/java/jdk
-
