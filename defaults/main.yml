@@ -16,11 +16,23 @@ java_bins_update: True
 
 java_type: jdk # jdk or server-jre
 
-# Server JRE or JDK 8.161
+# Server JRE or JDK 8.171
 java_version: 8
-java_update: 161
-java_build: '12'
-java_download_code: '2f38c3b165be4555a1fa6e98c45e0808'
+java_update: 171
+java_build: '11'
+java_download_code: '512cd62ec5174c3487ac17c61aaa89e8'
+
+# Server JRE or JDK 8.172
+#java_version: 8
+#java_update: 172
+#java_build: '11'
+#java_download_code: 'a58eab1ec242421181065cdc37240b08'
+
+# Server JRE or JDK 8.161
+#java_version: 8
+#java_update: 161
+#java_build: '12'
+#java_download_code: '2f38c3b165be4555a1fa6e98c45e0808'
 
 # Server JRE or JDK 8.162
 # java_update: 162
@@ -33,3 +45,4 @@ java_usr_folder: /usr/java
 java_latest_folder: /usr/java/latest
 
 java_download_base_url: http://download.oracle.com/otn-pub/java/jdk
+
