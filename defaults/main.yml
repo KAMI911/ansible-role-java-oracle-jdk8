@@ -16,11 +16,17 @@ java_bins_update: True
 
 java_type: jdk # jdk or server-jre
 
-# Server JRE or JDK 8.171
+# Server JRE or JDK 8.181
 java_version: 8
-java_update: 171
-java_build: '11'
-java_download_code: '512cd62ec5174c3487ac17c61aaa89e8'
+java_update: 181
+java_build: '13'
+java_download_code: '96a7b8442fe848ef90c96a2fad6ed6d1'
+
+# Server JRE or JDK 8.171
+#java_version: 8
+#java_update: 171
+#java_build: '11'
+#java_download_code: '512cd62ec5174c3487ac17c61aaa89e8'
 
 # Server JRE or JDK 8.172
 #java_version: 8
