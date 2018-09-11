@@ -14,7 +14,7 @@ java_bins_server_jre: [ 'extcheck', 'pack200', 'jrunscript', 'keytool', 'schemag
 java_bins_priority: 9
 java_bins_update: true
 
-java_type: jdk # jdk or server-jre
+java_type: jdk  # jdk or server-jre
 
 # Server JRE or JDK 8.181
 java_version: 8

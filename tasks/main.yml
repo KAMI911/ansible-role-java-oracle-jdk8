@@ -32,7 +32,7 @@
       local_action:
         module: get_url
         url: '{{ java_download_url }}'
-        validate_certs: no
+        validate_certs: false
         headers: Cookie:oraclelicense=accept-securebackup-cookie
         dest: './{{ java_download_filename }}'
         mode: 0644
@@ -50,7 +50,7 @@
 - name: 'downloading Java 8 JDK file {{ java_download_filename }}'
   get_url:
     url: '{{ java_download_url }}'
-    validate_certs: no
+    validate_certs: false
     headers: Cookie:oraclelicense=accept-securebackup-cookie
     dest: '{{ java_archive }}'
     mode: 0644
@@ -71,8 +71,8 @@
     dest: '{{ java_security_folder }}/cacerts'
     owner: root
     group: root
-    backup: yes
-    force: yes
+    backup: true
+    force: true
 
 - name: 'refersing {{ java_latest_folder }} link to {{ java_folder }}'
   file:
@@ -96,13 +96,13 @@
     group: root
 
 - name: 'link Java DK binaries'
-  become: Yes
+  become: true
   alternatives: link="/usr/bin/{{ item }}" name="{{ item }}" path="{{ java_folder }}/bin/{{ item }}" priority={{ java_bins_priority }}
   with_items: "{{ java_bins_jdk }}"
   when: java_bins_update == true and java_type == 'jdk'
 
 - name: 'link Java Server RE binaries'
-  become: Yes
+  become: true
   alternatives: link="/usr/bin/{{ item }}" name="{{ item }}" path="{{ java_folder }}/bin/{{ item }}" priority={{ java_bins_priority }}
   with_items: "{{ java_bins_server_jre }}"
   when: java_bins_update == true and java_type == 'server_jre'
