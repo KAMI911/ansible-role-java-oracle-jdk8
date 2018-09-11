@@ -12,7 +12,7 @@
     mode: 0775
     owner: root
     group: root
-  when: java_installed.stat.exists == False or force_java_install == True
+  when: java_installed.stat.exists == false or force_java_install == true
 
 - name: is already downloaded locally
   become: false
@@ -36,16 +36,16 @@
         headers: Cookie:oraclelicense=accept-securebackup-cookie
         dest: './{{ java_download_filename }}'
         mode: 0644
-      run_once: True
-      when: ( java_is_local_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_installer_local == True
+      run_once: true
+      when: ( java_is_local_download_file.stat.exists == false or java_installer_force_overwrite == true ) and java_installer_force_download == true and java_installer_local == true
 
     - name: copy java tar file
       copy:
         src: '{{ java_download_filename }}'
         dest: '{{ java_archive }}'
         mode: 0644
-      when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_local == True
-  when: java_installer_local == True
+      when: ( java_is_download_file.stat.exists == false or java_installer_force_overwrite == true ) and java_installer_local == true
+  when: java_installer_local == true
 
 - name: 'downloading Java 8 JDK file {{ java_download_filename }}'
   get_url:
@@ -54,7 +54,7 @@
     headers: Cookie:oraclelicense=accept-securebackup-cookie
     dest: '{{ java_archive }}'
     mode: 0644
-  when: ( java_is_download_file.stat.exists == False or java_installer_force_overwrite == True ) and java_installer_force_download == True and java_installer_local == False
+  when: ( java_is_download_file.stat.exists == false or java_installer_force_overwrite == true ) and java_installer_force_download == true and java_installer_local == false
 
 - name: 'uncompressing {{ java_download_filename }} file'
   unarchive:
@@ -63,7 +63,7 @@
     owner: root
     group: root
     copy: no
-  when: java_installed.stat.exists == False or force_java_install == True
+  when: java_installed.stat.exists == false or force_java_install == true
 
 - name: 'copy Java cacerts file'
   copy:
@@ -86,7 +86,7 @@
   file:
     path: '{{ java_archive }}'
     state: absent
-  when: java_installer_keep == False
+  when: java_installer_keep == false
 
 - name: 'install Java environment variables'
   template:
@@ -99,10 +99,10 @@
   become: Yes
   alternatives: link="/usr/bin/{{ item }}" name="{{ item }}" path="{{ java_folder }}/bin/{{ item }}" priority={{ java_bins_priority }}
   with_items: "{{ java_bins_jdk }}"
-  when: java_bins_update == True and java_type == 'jdk'
+  when: java_bins_update == true and java_type == 'jdk'
 
 - name: 'link Java Server RE binaries'
   become: Yes
   alternatives: link="/usr/bin/{{ item }}" name="{{ item }}" path="{{ java_folder }}/bin/{{ item }}" priority={{ java_bins_priority }}
   with_items: "{{ java_bins_server_jre }}"
-  when: java_bins_update == True and java_type == 'server_jre'
+  when: java_bins_update == true and java_type == 'server_jre'
