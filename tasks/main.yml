@@ -62,7 +62,7 @@
     dest: '{{ java_usr_folder }}'
     owner: root
     group: root
-    copy: no
+    copy: false
   when: java_installed.stat.exists == false or force_java_install == true
 
 - name: 'copy Java cacerts file'
