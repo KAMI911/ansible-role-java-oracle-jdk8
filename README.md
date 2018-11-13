@@ -112,6 +112,28 @@ This role was created in 2016-2018 by Kálmán Szalai - KAMI
 If you have any question, do not hesitate and drop me a line.
 If you found a bug, or have a feature request, you can [fill an issue](https://github.com/KAMI911/ansible-role-java-oracle-jdk8/issues).
 
+### Using as a submudule of an AWX playbook
+
+#### Add as a submodule
+
+```
+git submodule add --force git@github.com:KAMI911/ansible-role-java-oracle-jdk8.git roles/java-oracle-jdk8
+```
+
+#### Update as sumodule
+
+Update only this submodule
+
+```
+git submodule update --remote roles/java-oracle-jdk8/
+```
+
+Update all submodules:
+
+```
+git submodule foreach git pull origin master
+```
+
 ## Contributing
 
 There are many ways to contribute to ansible-role-java-oracle-jdk8 -- whether it be sending patches,
@@ -122,7 +144,13 @@ Please continue reading in the [contributing chapter](CONTRIBUTING.md).
 
 ### Fork me on Github
 
-https://github.com/KAMI911/ansible-role-java-oracle-jdk8
+SSH:
+
+    git@github.com:KAMI911/ansible-role-java-oracle-jdk8.git
+
+HTTPS:
+
+    https://github.com/KAMI911/ansible-role-java-oracle-jdk8
 
 Add a new remote `upstream` with this repository as value.
 
