@@ -1,0 +1,23 @@
+# Molecule managed
+
+---
+all:
+  hosts:
+    java-centos6-8-jdk: &id001
+      ansible_connection: docker
+    java-centos6-8-server-jre: &id002
+      ansible_connection: docker
+    java-centos7-jdk: &id003
+      ansible_connection: docker
+    java-centos7-server-jre: &id004
+      ansible_connection: docker
+jdk:
+  hosts:
+    java-centos6-8-jdk: *id001
+    java-centos6-8-server-jre: *id002
+server_jre:
+  hosts:
+    java-centos7-jdk: *id003
+    java-centos7-server-jre: *id004
+ungrouped:
+  vars: {}
