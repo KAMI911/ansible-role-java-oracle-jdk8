@@ -74,7 +74,7 @@
     backup: true
     force: true
 
-- name: 'refersing {{ java_latest_folder }} link to {{ java_folder }}'
+- name: 'refresing {{ java_latest_folder }} link to {{ java_folder }}'
   file:
     src: '{{ java_folder }}'
     dest: '{{ java_latest_folder }}'
