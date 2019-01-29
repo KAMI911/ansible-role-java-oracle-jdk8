@@ -55,11 +55,11 @@ Type of Java installer - JDK is: jdk, and Server JRE is: server-jre
 
 Java major version.
 
-    java_update: 181
+    java_update: 201
 
 Java minor version.
 
-    java_build: "13"
+    java_build: "09"
 
 Java micro version.
 
@@ -182,4 +182,3 @@ If you find this useful, please consider a donation:
 [Support]: #support
 [Contributing]: #contributing
 [Donation]: #donation
-
