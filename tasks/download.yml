@@ -54,7 +54,7 @@
     headers: Cookie:oraclelicense=accept-securebackup-cookie
     dest: '{{ java_archive }}'
     mode: 0644
-  when: ( not java_is_download_file.stat.exists or java_installer_force_overwrite) and java_installer_force_download and not java_installer_local
+  when: ( not java_is_download_file.stat.exists or java_installer_force_overwrite ) and java_installer_force_download and not java_installer_local
 
 - name: 'uncompressing {{ java_download_filename }} file'
   unarchive:
