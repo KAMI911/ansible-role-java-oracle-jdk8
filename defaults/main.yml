@@ -23,10 +23,10 @@ java_build: '11'
 java_download_code: '230deb18db3e4014bb8e3e8324f81b43'
 
 # Server JRE or JDK 8.201
-java_version: 8
-java_update: 201
-java_build: '09'
-java_download_code: '42970487e3af4f5aa5bca3f542482c60'
+# java_version: 8
+# java_update: 201
+# java_build: '09'
+# java_download_code: '42970487e3af4f5aa5bca3f542482c60'
 
 # Server JRE or JDK 8.181
 # java_version: 8
