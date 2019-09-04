@@ -1,5 +1,11 @@
 ---
 - name: Converge
   hosts: all
+  gather_facts: false
+  tasks:
+    - name: install unzip packages for CentOS 7
+      raw: yum install -y gzip unzip tar
+      become: true
+      changed_when: false
   roles:
     - role: ansible-role-java-oracle-jdk8
