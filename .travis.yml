@@ -1,6 +1,6 @@
 ---
 language: python
-python: "2.7"
+python: "3.6"
 
 # Use the new container infrastructure
 sudo: true
@@ -13,7 +13,7 @@ before_install:
   - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce gzip unzip tar
 
 install:
-  - pip install ansible molecule 'molecule[docker]'
+  - pip3 install 'molecule[docker]'
 
 script:
   - travis_wait 60 molecule test
