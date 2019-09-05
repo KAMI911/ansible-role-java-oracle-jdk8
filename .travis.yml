@@ -10,10 +10,10 @@ services:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce gzip unzip tar
 
 install:
-  - pip install 'molecule[docker]'
+  - pip install ansible molecule 'molecule[docker]'
 
 script:
   - travis_wait 60 molecule test
