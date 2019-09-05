@@ -6,7 +6,8 @@ services:
 
 before_script:
   - apk update && apk add --no-cache docker python3-dev py3-pip docker gcc git curl build-base autoconf automake py3-cryptography linux-headers musl-dev libffi-dev openssl-dev openssh gzip unzip tar
-  # - docker info
+  - rc-service docker start
+  - docker info
   - python3 --version
   - pip3 install ansible molecule docker 'molecule[docker]'
   - ansible --version
