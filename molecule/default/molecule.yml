@@ -4,31 +4,47 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: java-centos6-8-jdk
-    image: centos
-    image_version: 6.8
+  - name: java-centos6-11-jdk
+    image: geerlingguy/docker-centos6-ansible
+    image_version: latest
     groups:
       - jdk
 
-  - name: java-centos6-8-server-jre
-    image: centos
-    image_version: 6.8
+  - name: java-centos7-11-jdk
+    image: geerlingguy/docker-centos7-ansible
+    image_version: latest
+    privileged: true
     groups:
       - jdk
 
-  - name: java-centos7-jdk
-    image: milcom/centos7-systemd
+  - name: java-centos8-11-jdk
+    image: geerlingguy/docker-centos8-ansible
+    image_version: latest
+    privileged: true
+    groups:
+      - jdk
+      - python3
+
+  - name: java-centos6-11-server_jre
+    image: geerlingguy/docker-centos6-ansible
+    image_version: latest
+    groups:
+      - jdk
+
+  - name: java-centos7-11-server_jre
+    image: geerlingguy/docker-centos7-ansible
     image_version: latest
     privileged: true
     groups:
       - server_jre
 
-  - name: java-centos7-server-jre
-    image: milcom/centos7-systemd
+  - name: java-centos8-11-server_jre
+    image: geerlingguy/docker-centos8-ansible
     image_version: latest
     privileged: true
     groups:
       - server_jre
+      - python3
 
 provisioner:
   name: ansible
@@ -40,6 +56,8 @@ provisioner:
         java_type: 'jdk'
       server_jre:
         java_type: 'server-jre'
+      python3:
+        ansible_python_interpreter: '/usr/bin/env python3'
 scenario:
   name: default
 verifier:
